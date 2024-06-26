@@ -36,5 +36,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-      - name: Transfer Build Files to Ubuntu Instance
-        run: scp -r build/* ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_HOST }}:/tmp
+      - name: executing remote ssh commands using passwordss
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            whoami
