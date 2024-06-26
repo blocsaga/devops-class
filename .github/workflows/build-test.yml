@@ -37,10 +37,9 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       - name: executing remote ssh commands using passwordss
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            whoami
+          script: whoami
